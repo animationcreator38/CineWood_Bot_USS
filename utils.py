@@ -1,6 +1,6 @@
 import logging
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
-from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, SHORTLINK_URL, SHORTLINK_API, IS_SHORTLINK, LOG_CHANNEL, TUTORIAL, GRP_LNK, CHNL_LNK, CUSTOM_FILE_CAPTION, SECOND_SHORTLINK_URL, SECOND_SHORTLINK_API
+from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, SHORTLINK_URL, SHORTLINK_API, IS_SHORTLINK, LOG_CHANNEL, TUTORIAL, GRP_LNK, CHNL_LNK, CUSTOM_FILE_CAPTION
 from imdb import Cinemagoer 
 import asyncio
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
@@ -52,6 +52,7 @@ class temp(object):
     GETALL = {}
     SHORT = {}
     SETTINGS = {}
+    IMDB_CAP = {}
 
 async def is_subscribed(bot, query):
     try:
@@ -458,7 +459,7 @@ def humanbytes(size):
         n += 1
     return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
 
-async def get_shortlink(chat_id, link, second=False):
+async def get_shortlink(chat_id, link):
     settings = await get_settings(chat_id) #fetching settings for group
     if 'shortlink' in settings.keys():
         URL = settings['shortlink']
@@ -466,9 +467,9 @@ async def get_shortlink(chat_id, link, second=False):
     else:
         URL = SHORTLINK_URL
         API = SHORTLINK_API
-    if URL.startswith("shorturllink") or URL.startswith("terabox.in") or URL.startswith("urlshorten.in") or second:
-        URL = SECOND_SHORTLINK_URL
-        API = SECOND_SHORTLINK_API
+    if URL.startswith("shorturllink") or URL.startswith("terabox.in") or URL.startswith("urlshorten.in"):
+        URL = SHORTLINK_URL
+        API = SHORTLINK_API
     if URL == "api.shareus.io":
         # method 1:
         # https = link.split(":")[0] #splitting https or http from link
@@ -517,116 +518,14 @@ async def get_shortlink(chat_id, link, second=False):
         shortzy = Shortzy(api_key=API, base_site=URL)
         link = await shortzy.convert(link)
         return link
-
-# async def get_shortlink(chat_id, link, second=False):
-#     if not second:
-#         settings = await get_settings(chat_id) #fetching settings for group
-#         if 'shortlink' in settings.keys():
-#             URL = settings['shortlink']
-#             API = settings['shortlink_api']
-#         else:
-#             URL = SHORTLINK_URL
-#             API = SHORTLINK_API
-#         if URL.startswith("shorturllink"):
-#             URL = SECOND_SHORTLINK_URL
-#             API = SECOND_SHORTLINK_API
-#         # if 'shortlink_api' in settings.keys():
-#         #     API = settings['shortlink_api']
-#         # elif URL.startswith("shorturllink"):
-#         #     URL = SECOND_SHORTLINK_URL
-#         # else:
-#         #     API = SHORTLINK_API
-#         https = link.split(":")[0] #splitting https or http from link
-#         if "http" == https: #if https == "http":
-#             https = "https"
-#             link = link.replace("http", https) #replacing http to https
-#         if URL == "api.shareus.in":
-#             url = f'https://{URL}/shortLink'
-#             params = {
-#                 "token": API,
-#                 "format": "json",
-#                 "link": link,
-#             }
-#             try:
-#                 async with aiohttp.ClientSession() as session:
-#                     async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
-#                         data = await response.json(content_type="text/html")
-#                         if data["status"] == "success":
-#                             return data["shortlink"]
-#                         else:
-#                             logger.error(f"Error: {data['message']}")
-#                             return f'https://{URL}/shortLink?token={API}&format=json&link={link}'
-#             except Exception as e:
-#                 logger.error(e)
-#                 return f'https://{URL}/shortLink?token={API}&format=json&link={link}'
-#         else:
-#             url = f'https://{URL}/api'
-#             params = {
-#                 "api": API,
-#                 "url": link,
-#             }
-#             try:
-#                 async with aiohttp.ClientSession() as session:
-#                     async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
-#                         data = await response.json()
-#                         if data["status"] == "success":
-#                             return data["shortenedUrl"]
-#                         else:
-#                             logger.error(f"Error: {data['message']}")
-#                             if URL == 'clicksfly.com':
-#                                 return f'https://{URL}/api?api={API}&url={link}'
-#                             else:
-#                                 return f'https://{URL}/api?api={API}&link={link}'
-#             except Exception as e:
-#                 SECOND_SHORTENER[chat_id] = URL
-#                 logger.error(e)
-#                 await get_shortlink(chat_id, link, second=True)
-#                 # return f'https://{URL}/api?api={API}&link={link}'
-#     else:
-#         if SECOND_SHORTENER.get(chat_id).startswith('shorturllink'):
-#             URL = SECOND_SHORTLINK_URL
-#             API = SECOND_SHORTLINK_API
-#         else:
-#             URL = SHORTLINK_URL
-#             API = SHORTLINK_API
-#         url = f'https://{URL}/api'
-#         params = {
-#             "api": API,
-#             "url": link,
-#         }
-#         try:
-#             async with aiohttp.ClientSession() as session:
-#                 async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
-#                     data = await response.json()
-#                     if data["status"] == "success":
-#                         return data["shortenedUrl"]
-#                     else:
-#                         logger.error(f"Error: {data['message']}")
-#                         return f'https://{URL}/api?api={API}&link={link}'
-#         except Exception as e:
-#             logger.error(e)
-#             return f'https://{URL}/api?api={API}&link={link}'
-#     # settings = await get_settings(chat_id) #fetching settings for group
-#     # if 'shortlink' in settings.keys():
-#     #     URL = settings['shortlink']
-#     #     API = settings['shortlink_api']
-#     # else:
-#     #     URL = SHORTLINK_URL
-#     #     API = SHORTLINK_API
-#     # if URL.startswith("shorturllink"):
-#     #     URL = SECOND_SHORTLINK_URL
-#     #     API = SECOND_SHORTLINK_API
-#     # # url = settings['url']
-#     # # api = settings['api']
-#     # shortzy = Shortzy(api_key=API, base_site=URL)
-
-#     # link = await shortzy.convert(link)
-#     # return link
     
 async def get_tutorial(chat_id):
     settings = await get_settings(chat_id) #fetching settings for group
     if 'tutorial' in settings.keys():
-        TUTORIAL_URL = settings['tutorial']
+        if settings['is_tutorial']:
+            TUTORIAL_URL = settings['tutorial']
+        else:
+            TUTORIAL_URL = TUTORIAL
     else:
         TUTORIAL_URL = TUTORIAL
     return TUTORIAL_URL
@@ -772,7 +671,7 @@ async def send_all(bot, userid, files, ident, chat_id, user_name, query):
                                 InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
                                 InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                             ],[
-                                InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/KUSHALHK")
+                                InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/creatorrio")
                                 ]
                             ]
                         )
@@ -783,40 +682,62 @@ async def send_all(bot, userid, files, ident, chat_id, user_name, query):
         await query.answer('Hᴇʏ, Sᴛᴀʀᴛ Bᴏᴛ Fɪʀsᴛ Aɴᴅ Cʟɪᴄᴋ Sᴇɴᴅ Aʟʟ', show_alert=True)
     except Exception as e:
         await query.answer('Hᴇʏ, Sᴛᴀʀᴛ Bᴏᴛ Fɪʀsᴛ Aɴᴅ Cʟɪᴄᴋ Sᴇɴᴅ Aʟʟ', show_alert=True)
-    '''if IS_SHORTLINK == True:
-        for file in files:
-            title = file.file_name
-            size = get_size(file.file_size)
-            await bot.send_message(chat_id=userid, text=f"<b>Hᴇʏ ᴛʜᴇʀᴇ {user_name} 👋🏽 \n\n✅ Sᴇᴄᴜʀᴇ ʟɪɴᴋ ᴛᴏ ʏᴏᴜʀ ғɪʟᴇ ʜᴀs sᴜᴄᴄᴇssғᴜʟʟʏ ʙᴇᴇɴ ɢᴇɴᴇʀᴀᴛᴇᴅ ᴘʟᴇᴀsᴇ ᴄʟɪᴄᴋ ᴅᴏᴡɴʟᴏᴀᴅ ʙᴜᴛᴛᴏɴ\n\n🗃️ Fɪʟᴇ Nᴀᴍᴇ : {title}\n🔖 Fɪʟᴇ Sɪᴢᴇ : {size}</b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📤 Dᴏᴡɴʟᴏᴀᴅ 📥", url=await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}"))]])
-    )
-    else:
-        for file in files:
-            f_caption = file.caption
-            title = file.file_name
-            size = get_size(file.file_size)
-            if CUSTOM_FILE_CAPTION:
-                try:
-                    f_caption = CUSTOM_FILE_CAPTION.format(file_name='' if title is None else title,
-                                                            file_size='' if size is None else size,
-                                                            file_caption='' if f_caption is None else f_caption)
-                except Exception as e:
-                    print(e)
-                    f_caption = f_caption
-            if f_caption is None:
-                f_caption = f"{title}"
-            await bot.send_cached_media(
-                chat_id=userid,
-                file_id=file.file_id,
-                caption=f_caption,
-                protect_content=True if ident == "filep" else False,
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                        InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
-                        InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
-                    ],[
-                        InlineKeyboardButton("Bᴏᴛ Oᴡɴᴇʀ", url="t.me/KUSHALHK")
-                        ]
-                    ]
+        
+async def get_cap(settings, remaining_seconds, files, query, total_results, search):
+    # Aᴅᴅᴇᴅ Bʏ @creatorrio
+    if settings["imdb"]:
+        IMDB_CAP = temp.IMDB_CAP.get(query.from_user.id)
+        if IMDB_CAP:
+            cap = IMDB_CAP
+            cap+="<b>\n\n<u>🍿 Your Movie Files 👇</u></b>\n\n"
+            for file in files:
+                cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+        else:
+            imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
+            if imdb:
+                TEMPLATE = script.IMDB_TEMPLATE_TXT
+                cap = TEMPLATE.format(
+                    qurey=search,
+                    title=imdb['title'],
+                    votes=imdb['votes'],
+                    aka=imdb["aka"],
+                    seasons=imdb["seasons"],
+                    box_office=imdb['box_office'],
+                    localized_title=imdb['localized_title'],
+                    kind=imdb['kind'],
+                    imdb_id=imdb["imdb_id"],
+                    cast=imdb["cast"],
+                    runtime=imdb["runtime"],
+                    countries=imdb["countries"],
+                    certificates=imdb["certificates"],
+                    languages=imdb["languages"],
+                    director=imdb["director"],
+                    writer=imdb["writer"],
+                    producer=imdb["producer"],
+                    composer=imdb["composer"],
+                    cinematographer=imdb["cinematographer"],
+                    music_team=imdb["music_team"],
+                    distributors=imdb["distributors"],
+                    release_date=imdb['release_date'],
+                    year=imdb['year'],
+                    genres=imdb['genres'],
+                    poster=imdb['poster'],
+                    plot=imdb['plot'],
+                    rating=imdb['rating'],
+                    url=imdb['url'],
+                    **locals()
                 )
-            )'''
+                cap+="<b>\n\n<u>🍿 Your Movie Files 👇</u></b>\n\n"
+                for file in files:
+                    cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+            else:
+                cap = f"<b>Tʜᴇ Rᴇꜱᴜʟᴛꜱ Fᴏʀ ☞ {search}\n\nRᴇǫᴜᴇsᴛᴇᴅ Bʏ ☞ {message.from_user.mention}\n\nʀᴇsᴜʟᴛ sʜᴏᴡ ɪɴ ☞ {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {message.chat.title}\n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
+                cap+="<b><u>🍿 Your Movie Files 👇</u></b>\n\n"
+                for file in files:
+                    cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+    else:
+        cap = f"<b>Hᴇʏ {query.from_user.mention}, Fᴏᴜɴᴅ {total_results} Rᴇsᴜʟᴛs ғᴏʀ Yᴏᴜʀ Movie {search}\n\n</b>"
+        cap+="<b><u>🍿 Your Movie Files 👇</u></b>\n\n"
+        for file in files:
+            cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
+    return cap
