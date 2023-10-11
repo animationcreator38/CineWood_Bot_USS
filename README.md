@@ -9,6 +9,7 @@
 </p>
 
 ## 𝐹𝑒𝑎𝑡𝑢𝑟𝑒𝑠
+- [x] 𝑆𝑇𝑅𝐸𝐴𝑀 𝐹𝐸𝐴𝑇𝑈𝑅𝐸 🖥
 - [x] 𝐼𝑀𝐷𝐵 𝑇𝑒𝑚𝑝𝑙𝑎𝑡𝑒 𝑆𝑒𝑡
 - [x] 𝐼𝑛𝑑𝑒𝑥𝑒𝑠 𝐹𝑖𝑙𝑒𝑠 𝑎𝑏𝑜𝑣𝑒 2𝐺𝐵
 - [x] 𝑃𝑟𝑒𝐷𝑉𝐷 𝑎𝑛𝑑 𝐶𝑎𝑚𝑅𝑖𝑝 𝐷𝑒𝑙𝑒𝑡𝑒 𝑀𝑜𝑑𝑒
@@ -49,6 +50,10 @@
 
 <b>𝑇𝑜 𝑘𝑛𝑜𝑤 𝑎𝑏𝑜𝑢𝑡 𝑎𝑙𝑙 𝑓𝑒𝑎𝑡𝑢𝑟𝑒𝑠, 𝐽𝑜𝑖𝑛 𝑜𝑢𝑟 <a href='https://t.me/TG_BOTS_UPDATE'>𝑢𝑝𝑑𝑎𝑡𝑒𝑠 𝑐ℎ𝑎𝑛𝑛𝑒𝑙</a>.</b>
 
+* [![𝐑𝐄𝐏𝐎 𝐎𝐖𝐍𝐄𝐑](https://img.shields.io/static/v1?label=𝐂𝐎𝐍𝐓𝐀𝐂𝐓&message=𝐌𝐄&color=critical)](https://t.me/KUSHALHK)
+
+* * [![𝐃𝐄𝐌𝐎 𝐁𝐎𝐓](https://img.shields.io/static/v1?label=𝐃𝐄𝐌𝐎&message=𝐁𝐎𝐓&color=critical)](https://t.me/TG_autofilter_bot)
+  
 ## 𝐶𝑜𝑚𝑚𝑎𝑛𝑑𝑠
 ```
 • /invite - 𝑡𝑜 𝑔𝑒𝑡 𝑡ℎ𝑒 𝑖𝑛𝑣𝑖𝑡𝑒 𝑙𝑖𝑛𝑘 𝑜𝑓 𝑎𝑛𝑦 𝑐ℎ𝑎𝑡 𝑤ℎ𝑖𝑐ℎ 𝑡ℎ𝑒 𝑏𝑜𝑡 𝑖𝑠 𝑎𝑑𝑚𝑖𝑛.
