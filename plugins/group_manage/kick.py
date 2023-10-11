@@ -1,6 +1,6 @@
-istrator in this from info import ADMINS
-from Script import *
-from time import time, sleep
+from info import ADMINS
+from Script import script
+from time, sleep
 from pyrogram import Client, filters, enums 
 from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
