@@ -28,13 +28,13 @@ async def song(client, message):
         thumb_name = f'thumb{title}.jpg'
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, 'wb').write(thumb.content)
-        performer = f"[TG_BOTZ™]" 
+        performer = f"[RIO NETWORKS™]" 
         duration = results[0]["duration"]
         url_suffix = results[0]["url_suffix"]
         views = results[0]["views"]
     except Exception as e:
         print(str(e))
-        return await m.edit("**𝙵𝙾𝚄𝙽𝙳 𝙽𝙾𝚃𝙷𝙸𝙽𝙶 𝙿𝙻𝙴𝙰𝚂𝙴 𝙲𝙾𝚁𝚁𝙴𝙲𝚃 𝚃𝙷𝙴 𝚂𝙿𝙴𝙻𝙻𝙸𝙽𝙶 𝙾𝚁 𝙲𝙷𝙴𝙲𝙺 𝚃𝙷𝙴 𝙻𝙸𝙽𝙺**")
+        return await m.edit("Example: /song vaa vaathi song")
                 
     await m.edit("**dσwnlσαdíng чσur ѕσng...!**")
     try:
@@ -43,7 +43,7 @@ async def song(client, message):
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
 
-        cap = "**BY›› [TG_BOTZ™](https://t.me/TG_UPDATES1)**"
+        cap = "**BY›› [RIO NETWORKS™](https://t.me/creatorrio)**"
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -84,7 +84,7 @@ async def vsong(client, message: Message):
     urlissed = get_text(message)
     pablo = await client.send_message(message.chat.id, f"**𝙵𝙸𝙽𝙳𝙸𝙽𝙶 𝚈𝙾𝚄𝚁 𝚅𝙸𝙳𝙴𝙾** `{urlissed}`")
     if not urlissed:
-        return await pablo.edit("Invalid Command Syntax Please Check help Menu To Know More!")     
+        return await pablo.edit("Example: /video Your video link")     
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
     mi = search.result()
     mio = mi["search_result"]
