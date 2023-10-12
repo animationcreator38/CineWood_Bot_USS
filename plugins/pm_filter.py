@@ -1572,21 +1572,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "shortlink_info":
-        buttons = [[
-            InlineKeyboardButton('⇍ ʙᴀᴄᴋ ⇏', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="● ◌ ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ◌"
-        )
-        await query.message.edit_text(
-            text="● ● ●"
-        )
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
+            btn = [[
+                InlineKeyboardButton("𝐂𝐨𝐧𝐭𝐚𝐜𝐭", url="telegram.me/cinewood_1")
+        ], [
+            InlineKeyboardButton("𝐃𝐞𝐦𝐨 𝐕𝐢𝐝𝐞𝐨", url="t.me/how_to_download_mo_vie/30")
+
+        ], [
+            InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data="start")
+
+            ]]
+            await client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
             InputMediaPhoto(random.choice(PICS))
