@@ -1235,8 +1235,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif lazyData.startswith("generate_stream_link"):
         _, file_id = lazyData.split(":")
-    elif lazyData.startswith("generate_stream_link"):
-        _, file_id = lazyData.split(":")
         try:
             user_id = query.from_user.id
             username =  query.from_user.mention 
