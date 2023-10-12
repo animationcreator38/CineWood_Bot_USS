@@ -133,7 +133,7 @@ async def next_page(bot, query):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙊𝙒 𝙏𝙊 𝙊𝙋𝙀𝙉 𝙇𝙄𝙉𝙆 🔗🤔', url=TUTORIAL)
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=TUTORIAL)
         ])
     else:
         btn = []
@@ -145,7 +145,7 @@ async def next_page(bot, query):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙊𝙒 𝙏𝙊 𝙊𝙋𝙀𝙉 𝙇𝙄𝙉𝙆 🔗🤔', url=TUTORIAL)
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=TUTORIAL)
         ])
     try:
         if settings['max_btn']:
@@ -360,7 +360,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙊𝙒 𝙏𝙊 𝙊𝙋𝙀𝙉 𝙇𝙄𝙉𝙆 🔗🤔', url=TUTORIAL)
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=TUTORIAL)
         ])
     else:
         btn = []
@@ -372,7 +372,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙊𝙒 𝙏𝙊 𝙊𝙋𝙀𝙉 𝙇𝙄𝙉𝙆 🔗🤔', url=TUTORIAL)
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=TUTORIAL)
         ])
 
     if offset != "":
@@ -537,7 +537,7 @@ async def filter_seasons_cb_handler(client: Client, query: CallbackQuery):
             for file in files
         ]
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙊𝙒 𝙏𝙊 𝙊𝙋𝙀𝙉 𝙇𝙄𝙉𝙆 🔗🤔', url=TUTORIAL),
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=TUTORIAL),
             InlineKeyboardButton("Sᴇʟᴇᴄᴛ ᴀɢᴀɪɴ", callback_data=f"seasons#{key}")
         ])
     else:
@@ -550,7 +550,7 @@ async def filter_seasons_cb_handler(client: Client, query: CallbackQuery):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙊𝙒 𝙏𝙊 𝙊𝙋𝙀𝙉 𝙇𝙄𝙉𝙆 🔗🤔', url=TUTORIAL)
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=TUTORIAL)
         ])
         
     offset = 0
@@ -1257,14 +1257,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
                 quote=True,
                 disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Download From Chrome 🚀", url=lazy_download),  # we download Link
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🛡 Fast Download", url=lazy_download),  # we download Link
                                                     InlineKeyboardButton('Watch online 📡', url=lazy_stream)]])  # web stream Link
             )
             await query.message.reply_text(
                 text="•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ ☠︎⚔",
                 quote=True,
                 disable_web_page_preview=True,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Download From Chrome 🚀", url=lazy_download),  # we download Link
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🛡 Fast Download", url=lazy_download),  # we download Link
                                                     InlineKeyboardButton('Watch online 📡', url=lazy_stream)]])  # web stream Link
             )
         except Exception as e:
@@ -1868,7 +1868,7 @@ async def auto_filter(client, msg, spoll=False):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙊𝙒 𝙏𝙊 𝙊𝙋𝙀𝙉 𝙇𝙄𝙉𝙆 🔗🤔', url=TUTORIAL)
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=TUTORIAL)
         ])
     else:
         btn = []
@@ -1880,7 +1880,7 @@ async def auto_filter(client, msg, spoll=False):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙊𝙒 𝙏𝙊 𝙊𝙋𝙀𝙉 𝙇𝙄𝙉𝙆 🔗🤔', url=TUTORIAL)
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=TUTORIAL)
         ])
     if offset != "":
         req = message.from_user.id if message.from_user else 0
