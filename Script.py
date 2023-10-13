@@ -267,7 +267,7 @@ IMDb Data:
 🎛 Countries : <code>{countries}</code>
 ⏰ Result Shown in: {remaining_seconds} 
 
-💁‍♂️ 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐁𝐲 : {message.from_user.mention}</b>"""
+💬 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐁𝐲 : {message.from_user.mention}</b>"""
     
     ALL_FILTERS = """
 <b>Hᴇʏ {}, Tʜᴇsᴇ ᴀʀᴇ ᴍʏ ᴛʜʀᴇᴇ ᴛʏᴘᴇs ᴏғ ғɪʟᴛᴇʀs.</b>"""
