@@ -1933,9 +1933,9 @@ async def auto_filter(client, msg, spoll=False):
                 cap += f"<b>\n📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n</a></b>"
     else:
         if settings["button"]:
-            cap = f"<b>🔍 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐁𝐲 {search}\n\n💬 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐁𝐲 {message.from_user.mention}\n\n⏳ 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐓𝐢𝐦𝐞 {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {message.chat.title} \n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
+            cap = f"<b>🔍 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐁𝐲 : {search}\n\n💬 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐁𝐲 : {message.from_user.mention}\n\n⏳ 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐓𝐢𝐦𝐞 : {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {message.chat.title} \n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
         else:
-            cap = f"<b>🔍 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐁𝐲 {search}\n\n💬 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐁𝐲 {message.from_user.mention}\n\n⏳ 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐓𝐢𝐦𝐞 {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {message.chat.title} \n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
+            cap = f"<b>🔍 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐁𝐲 : {search}\n\n💬 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐁𝐲 : {message.from_user.mention}\n\n⏳ 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐓𝐢𝐦𝐞 : {remaining_seconds} sᴇᴄᴏɴᴅs\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ☞ : {message.chat.title} \n\n⚠️ ᴀꜰᴛᴇʀ 5 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ 🗑️\n\n</b>"
             cap+="<b><u>⬇️ Your Movie Files ⬇️</u></b>\n\n"
             for file in files:
                 cap += f"<b>📁 <a href='https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}'>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}\n\n</a></b>"
