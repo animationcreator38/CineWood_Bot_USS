@@ -265,7 +265,7 @@ IMDb Data:
 📀 RunTime: {runtime} Minutes
 📆 Release Info : {release_date}
 🎛 Countries : <code>{countries}</code>
-⏰ Result Shown in: {remaining_seconds} 
+⏳ 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐓𝐢𝐦𝐞 : {remaining_seconds} 
 
 💬 𝐒𝐞𝐚𝐫𝐜𝐡𝐞𝐝 𝐁𝐲 : {message.from_user.mention}</b>"""
     
