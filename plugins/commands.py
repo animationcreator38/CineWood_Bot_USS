@@ -965,7 +965,7 @@ async def deletemultiplefiles(bot, message):
         parse_mode=enums.ParseMode.HTML
     )
 
-@Client.on_message(filters.command("set_api"))
+@Client.on_message(filters.command("setlink"))
 async def shortlink(bot, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -995,7 +995,7 @@ async def shortlink(bot, message):
     await save_group_settings(grpid, 'shortlink', shortlink_url)
     await save_group_settings(grpid, 'shortlink_api', api)
     await save_group_settings(grpid, 'is_shortlink', True)
-    await reply.edit_text(f"<b>Successfully set API for {title}.\n\nCurrent api Website: <code>{shortlink_url}</code>\nCurrent API: <code>{api}</code></b>")
+    await reply.edit_text(f"<b>Successfully added setlink ✅✅.\n\nCurrent setlink Website: <code>{shortlink_url}</code>\nCurrent setlink: <code>{api}</code></b>")
     
 @Client.on_message(filters.command("setshortlinkoff") & filters.user(ADMINS))
 async def offshortlink(bot, message):
@@ -1049,7 +1049,7 @@ async def showshortlink(bot, message):
 #     if 'tutorial' in settings.keys():
 #         st = settings['tutorial']
 #     else:
-#         return await message.reply_text("<b>Tutorial Link Not Connected\n\nYou can Connect Using /set_tutorial command</b>")
+#         return await message.reply_text("<b>Tutorial Link Not Connected\n\nYou can Connect Using /tutorial command</b>")
     if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS:
         return await message.reply_text("<b>Tʜɪs ᴄᴏᴍᴍᴀɴᴅ Wᴏʀᴋs Oɴʟʏ Fᴏʀ ᴛʜɪs Gʀᴏᴜᴘ Oᴡɴᴇʀ/Aᴅᴍɪɴ\n\nTʀʏ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ʏᴏᴜʀ Oᴡɴ Gʀᴏᴜᴘ, Iғ Yᴏᴜ Aʀᴇ Usɪɴɢ Mᴇ Iɴ Yᴏᴜʀ Gʀᴏᴜᴘ</b>")
     else:
@@ -1096,9 +1096,9 @@ async def settutorial(bot, message):
         tutorial = message.command[1]
         await save_group_settings(grpid, 'tutorial', tutorial)
         await save_group_settings(grpid, 'is_tutorial', True)
-        await reply.edit_text(f"<b>Successfully Added Tutorial\n\nHere is your tutorial link for your group {title} - <code>{tutorial}</code></b>")
+        await reply.edit_text(f"<b>Successfully Added Tutorial ✅✅\n\ntutorial link - <code>{tutorial}</code></b>")
     else:
-        return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
+        return await message.reply("<b>You entered Incorrect Format\n\nFormat: /tutorial your tutorial link</b>")
 
 @Client.on_message(filters.command("rmtutorial"))
 async def removetutorial(bot, message):
@@ -1121,7 +1121,7 @@ async def removetutorial(bot, message):
         pass
     reply = await message.reply_text("<b>Please Wait...</b>")
     await save_group_settings(grpid, 'is_tutorial', False)
-    await reply.edit_text(f"<b>Successfully Removed Your Tutorial Link!!!</b>")
+    await reply.edit_text(f"<b>Successfully Removed Tutorial ✅✅!!!</b>")
 
 @Client.on_message(filters.command("restart") & filters.user(ADMINS))
 async def stop_button(bot, message):
