@@ -293,3 +293,113 @@ async def list_chats(bot, message):
         with open('chats.txt', 'w+') as outfile:
             outfile.write(out)
         await message.reply_document('chats.txt', caption="List Of Chats")
+
+@app.on_message(filters.command(["start", "help"]))
+    async def start_command(_, message: Message):
+        if await mongo.is_banned_user(message.from_user.id):
+            return
+        await mongo.add_served_user(message.from_user.id)
+        await message.reply_text(config.PRIVATE_START_MESSAGE)
+
+    @app.on_message(
+        filters.command("mode") & filters.user(SUDO_USERS)
+    )
+    async def mode_func(_, message: Message):
+        if db is None:
+            return await message.reply_text(
+                "MONGO_DB_URI var not defined. Please define it first"
+            )
+        usage = "**Usage:**\n\n/mode [group | private]\n\n**Group**: All the incoming messages will be forwarded to Log group.\n\n**Private**: All the incoming messages will be forwarded to the Private Messages of SUDO_USERS"
+        if len(message.command) != 2:
+            return await message.reply_text(usage)
+        state = message.text.split(None, 1)[1].strip()
+        state = state.lower()
+        if state == "group":
+            await mongo.group_on()
+            await message.reply_text(
+                "Group Mode Enabled. All the incoming messages will be forwarded to LOG Group"
+            )
+        elif state == "private":
+            await mongo.group_off()
+            await message.reply_text(
+                "Private Mode Enabled. All the incoming messages will be forwarded to Private Message of all SUDO_USERs"
+            )
+        else:
+            await message.reply_text(usage)
+
+    @app.on_message(
+        filters.command("block") & filters.user(SUDO_USERS)
+    )
+    async def block_func(_, message: Message):
+        if db is None:
+            return await message.reply_text(
+                "MONGO_DB_URI var not defined. Please define it first"
+            )
+        if message.reply_to_message:
+            if not message.reply_to_message.forward_sender_name:
+                return await message.reply_text(
+                    "Please reply to forwarded messages only."
+                )
+            replied_id = message.reply_to_message_id
+            try:
+                replied_user_id = save[replied_id]
+            except Exception as e:
+                print(e)
+                return await message.reply_text(
+                    "Failed to fetch user. You might've restarted bot or some error happened. Please check logs"
+                )
+            if await mongo.is_banned_user(replied_user_id):
+                return await message.reply_text("Already Blocked")
+            else:
+                await mongo.add_banned_user(replied_user_id)
+                await message.reply_text("Banned User from The Bot")
+                try:
+                    await app.send_message(
+                        replied_user_id,
+                        "You're now banned from using the Bot by admins.",
+                    )
+                except:
+                    pass
+        else:
+            return await message.reply_text(
+                "Reply to a user's forwarded message to block him from using the bot"
+            )
+
+    @app.on_message(
+        filters.command("unblock") & filters.user(SUDO_USERS)
+    )
+    async def unblock_func(_, message: Message):
+        if db is None:
+            return await message.reply_text(
+                "MONGO_DB_URI var not defined. Please define it first"
+            )
+        if message.reply_to_message:
+            if not message.reply_to_message.forward_sender_name:
+                return await message.reply_text(
+                    "Please reply to forwarded messages only."
+                )
+            replied_id = message.reply_to_message_id
+            try:
+                replied_user_id = save[replied_id]
+            except Exception as e:
+                print(e)
+                return await message.reply_text(
+                    "Failed to fetch user. You might've restarted bot or some error happened. Please check logs"
+                )
+            if not await mongo.is_banned_user(replied_user_id):
+                return await message.reply_text("Already UnBlocked")
+            else:
+                await mongo.remove_banned_user(replied_user_id)
+                await message.reply_text(
+                    "Unblocked User from The Bot"
+                )
+                try:
+                    await app.send_message(
+                        replied_user_id,
+                        "You're now unbanned from the Bot by admins.",
+                    )
+                except:
+                    pass
+        else:
+            return await message.reply_text(
+                "Reply to a user's forwarded message to unblock him from the bot"
