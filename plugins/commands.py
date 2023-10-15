@@ -965,7 +965,7 @@ async def deletemultiplefiles(bot, message):
         parse_mode=enums.ParseMode.HTML
     )
 
-@Client.on_message(filters.command("setlink"))
+@Client.on_message(filters.command("shortlink"))
 async def shortlink(bot, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -995,7 +995,7 @@ async def shortlink(bot, message):
     await save_group_settings(grpid, 'shortlink', shortlink_url)
     await save_group_settings(grpid, 'shortlink_api', api)
     await save_group_settings(grpid, 'is_shortlink', True)
-    await reply.edit_text(f"<b>Successfully added shortlink...✅✅\n\nCurrent setlink Website: <code>{shortlink_url}</code>\nCurrent setlink: <code>{api}</code></b>")
+    await reply.edit_text(f"<b>Successfully added shortlink...✅✅\n\nCurrent shortlink Website: <code>{shortlink_url}</code>\nCurrent shortlink: <code>{api}</code></b>")
     
 @Client.on_message(filters.command("setshortlinkoff") & filters.user(ADMINS))
 async def offshortlink(bot, message):
