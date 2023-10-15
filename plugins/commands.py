@@ -995,7 +995,7 @@ async def shortlink(bot, message):
     await save_group_settings(grpid, 'shortlink', shortlink_url)
     await save_group_settings(grpid, 'shortlink_api', api)
     await save_group_settings(grpid, 'is_shortlink', True)
-    await reply.edit_text(f"<b>Successfully added setlink...✅✅.\n\nCurrent setlink Website: <code>{shortlink_url}</code>\nCurrent setlink: <code>{api}</code></b>")
+    await reply.edit_text(f"<b>Successfully added shortlink...✅✅\n\nCurrent setlink Website: <code>{shortlink_url}</code>\nCurrent setlink: <code>{api}</code></b>")
     
 @Client.on_message(filters.command("setshortlinkoff") & filters.user(ADMINS))
 async def offshortlink(bot, message):
@@ -1045,11 +1045,11 @@ async def showshortlink(bot, message):
 #         su = settings['shortlink']
 #         sa = settings['shortlink_api']
 #     else:
-#         return await message.reply_text("<b>Shortener Url Not Connected\n\nYou can Connect Using /setlink command</b>")
+#         return await message.reply_text("<b>Shortener Url Not Connected\n\nYou can Connect Using /shortlink command</b>")
 #     if 'tutorial' in settings.keys():
 #         st = settings['tutorial']
 #     else:
-#         return await message.reply_text("<b>Tutorial Link Not Connected\n\nYou can Connect Using /tutorial command</b>")
+#         return await message.reply_text("<b>Tutorial Link Not Connected\n\nYou can Connect Using /set_tutorial command</b>")
     if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS:
         return await message.reply_text("<b>Tʜɪs ᴄᴏᴍᴍᴀɴᴅ Wᴏʀᴋs Oɴʟʏ Fᴏʀ ᴛʜɪs Gʀᴏᴜᴘ Oᴡɴᴇʀ/Aᴅᴍɪɴ\n\nTʀʏ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ʏᴏᴜʀ Oᴡɴ Gʀᴏᴜᴘ, Iғ Yᴏᴜ Aʀᴇ Usɪɴɢ Mᴇ Iɴ Yᴏᴜʀ Gʀᴏᴜᴘ</b>")
     else:
@@ -1058,7 +1058,7 @@ async def showshortlink(bot, message):
             su = settings['shortlink']
             sa = settings['shortlink_api']
             st = settings['tutorial']
-            return await message.reply_text(f"<b>setlink Website: <code>{su}</code>\n\nApi: <code>{sa}</code>\n\nTutorial: <code>{st}</code></b>")
+            return await message.reply_text(f"<b>shortlink Website: <code>{su}</code>\n\nApi: <code>{sa}</code>\n\nTutorial: <code>{st}</code></b>")
         elif 'shortlink' in settings.keys() and 'tutorial' not in settings.keys():
             su = settings['shortlink']
             sa = settings['shortlink_api']
@@ -1070,7 +1070,7 @@ async def showshortlink(bot, message):
             return await message.reply_text("Shortener url and Tutorial Link Not Connected. Check this commands, /shortlink and /set_tutorial")
 
 
-@Client.on_message(filters.command("tutorial"))
+@Client.on_message(filters.command("/set_tutorial"))
 async def settutorial(bot, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -1098,9 +1098,9 @@ async def settutorial(bot, message):
         await save_group_settings(grpid, 'is_tutorial', True)
         await reply.edit_text(f"<b>Successfully Added Tutorial...✅✅\n\ntutorial link - <code>{tutorial}</code></b>")
     else:
-        return await message.reply("<b>You entered Incorrect Format\n\nFormat: /tutorial your tutorial link</b>")
+        return await message.reply("<b>You entered Incorrect Format\n\nFormat: /set_tutorial your tutorial link</b>")
 
-@Client.on_message(filters.command("rmtutorial"))
+@Client.on_message(filters.command("remove_tutorial"))
 async def removetutorial(bot, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
