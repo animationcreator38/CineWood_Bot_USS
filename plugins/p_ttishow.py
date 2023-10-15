@@ -293,26 +293,3 @@ async def list_chats(bot, message):
         with open('chats.txt', 'w+') as outfile:
             outfile.write(out)
         await message.reply_document('chats.txt', caption="List Of Chats")
-
-@app.on_message(
-        filters.command("mode") & filters.user(SUDO_USERS)
-    )
-    async def mode_func(_, message: Message):
-        if db is None:
-            return await message.reply_text(
-                "MONGO_DB_URI var not defined. Please define it first"
-            )
-        usage = "**Usage:**\n\n/mode [group | private]\n\n**Group**: All the incoming messages will be forwarded to Log group.\n\n**Private**: All the incoming messages will be forwarded to the Private Messages of SUDO_USERS"
-        if len(message.command) != 2:
-            return await message.reply_text(usage)
-        state = message.text.split(None, 1)[1].strip()
-        state = state.lower()
-        if state == "group":
-            await mongo.group_on()
-            await message.reply_text(
-                "Group Mode Enabled. All the incoming messages will be forwarded to LOG Group"
-            )
-        elif state == "private":
-            await mongo.group_off()
-            await message.reply_text(
-                "Private Mode Enabled. All the incoming messages will be forwarded to Private Message of all SUDO_USERs"
