@@ -133,7 +133,7 @@ async def next_page(bot, query):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=await get_tutorial(chat_id))
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=get_tutorial)
         ])
     else:
         btn = []
@@ -145,7 +145,7 @@ async def next_page(bot, query):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=await get_tutorial(chat_id))
+            InlineKeyboardButton('🤔 𝙃𝙤𝙬 𝙏𝙤 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙 𝙈𝙤𝙫𝙞𝙚 🤩', url=get_tutorial)
         ])
     try:
         if settings['max_btn']:
