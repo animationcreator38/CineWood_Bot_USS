@@ -965,7 +965,7 @@ async def deletemultiplefiles(bot, message):
         parse_mode=enums.ParseMode.HTML
     )
 
-@Client.on_message(filters.command("setlink"))
+@Client.on_message(filters.command("set_api"))
 async def shortlink(bot, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -1070,7 +1070,7 @@ async def showshortlink(bot, message):
             return await message.reply_text("Shortener url and Tutorial Link Not Connected. Check this commands, /shortlink and /set_tutorial")
 
 
-@Client.on_message(filters.command("setvideo"))
+@Client.on_message(filters.command("tutorial"))
 async def settutorial(bot, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -1090,7 +1090,7 @@ async def settutorial(bot, message):
     else:
         pass
     if len(message.command) == 1:
-        return await message.reply("<b>Give me a tutorial video link along with this command\n\nCommand Usage: /setvideo your tutorial link</b>")
+        return await message.reply("<b>Give me a tutorial link along with this command\n\nCommand Usage: /tutorial your tutorial link</b>")
     elif len(message.command) == 2:
         reply = await message.reply_text("<b>Please Wait...</b>")
         tutorial = message.command[1]
