@@ -1115,7 +1115,7 @@ async def removetutorial(bot, message):
         return
     userid = message.from_user.id
     user = await bot.get_chat_member(grpid, userid)
-    if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS:
+    if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and user.status enums.ChatMemberStatus.ADMINS:
         return
     else:
         pass
