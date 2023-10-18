@@ -1070,7 +1070,7 @@ async def showshortlink(bot, message):
             return await message.reply_text("Setlink url and Tutorial Link Not Connected. Check this commands, /shortlink and /set_tutorial")
 
 
-@Client.on_message(filters.command("tutorial"))
+@Client.on_message(filters.command("tutorial") & filters.user(ADMINS))
 async def settutorial(bot, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -1085,7 +1085,7 @@ async def settutorial(bot, message):
         return
     userid = message.from_user.id
     user = await bot.get_chat_member(grpid, userid)
-    if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER ADMINS:
+    if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS:
         return
     else:
         pass
