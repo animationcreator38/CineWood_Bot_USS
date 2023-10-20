@@ -1085,7 +1085,7 @@ async def settutorial(bot, message):
         return
     userid = message.from_user.id
     user = await bot.get_chat_member(grpid, userid)
-    if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and user.status != enums.ChatMemberStatus.ADMINS and str(userid) not in PREMIUM_USER:
+    if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and user.status != enums.ChatMemberStatus.ADMINS or str(userid) not in ADMINS:
         return
     else:
         pass
