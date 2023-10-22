@@ -1101,7 +1101,7 @@ async def settutorial(bot, message):
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /tutorial your tutorial link</b>")
 
 
-@Client.on_message(filters.command("adtutorial") & filters.user(ADMINS))
+@Client.on_message(filters.command("ad_tutorial") & filters.user(ADMINS))
 async def settutorial(bot, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
@@ -1112,8 +1112,6 @@ async def settutorial(bot, message):
     elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         grpid = message.chat.id
         title = message.chat.title
-    else:
-        return
     else:
         pass
     if len(message.command) == 1:
