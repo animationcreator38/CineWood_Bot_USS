@@ -1099,32 +1099,7 @@ async def settutorial(bot, message):
         await reply.edit_text(f"<b>Successfully Added Tutorial....✅✅\n\ntutorial link - <code>{tutorial}</code></b>")
     else:
         return await message.reply("<b>You entered Incorrect Format\n\nFormat: /tutorial your tutorial link</b>")
-
-
-@Client.on_message(filters.command("ad_tutorial") & filters.user(ADMINS))
-async def settutorial(bot, message):
-    userid = message.from_user.id if message.from_user else None
-    if not userid:
-        return await message.reply(f"You are anonymous admin. Turn off anonymous admin and try again this command")
-    chat_type = message.chat.type
-    if chat_type == enums.ChatType.PRIVATE:
-        return await message.reply_text("This Command Work Only in group\n\nTry it in your own group")
-    elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        grpid = message.chat.id
-        title = message.chat.title
-    else:
-        pass
-    if len(message.command) == 1:
-        return await message.reply("<b>Command Incomplete....</b>")
-    elif len(message.command) == 2:
-        reply = await message.reply_text("<b>Please Wait...</b>")
-        tutorial = message.command[1]
-        await save_group_settings(grpid, 'tutorial', tutorial)
-        await save_group_settings(grpid, 'is_tutorial', True)
-        await reply.edit_text(f"<b>Successfully Added Tutorial....✅✅\n\ntutorial link - <code>{tutorial}</code></b>")
-    else:
-        return await message.reply("<b>You entered Incorrect Format\n\nFormat: /tutorial your tutorial link</b>")
-        
+      
 
 @Client.on_message(filters.command("rmtutorial"))
 async def removetutorial(bot, message):
