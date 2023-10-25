@@ -945,7 +945,7 @@ async def send_msg(bot, message):
         out = "Chats Saved In DB Are:\n\n"
         success = False
         try:
-            chat = await tg.get_chats(target_id)
+            chat = await bot.get_chat(target_id)
             chats = await db.get_all_chats()
             async for cht in chats:
                 out += f"{cht['id']}"
