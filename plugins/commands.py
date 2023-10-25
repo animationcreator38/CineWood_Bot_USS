@@ -947,8 +947,8 @@ async def send_msg(bot, message):
         try:
             chat = await bot.get_chat(target_id)
             chats = await db.get_all_chats()
-            async for cht in chats:
-                out += f"{cht['id']}"
+            async for chat in chats:
+                out += f"{chat['id']}"
                 out += '\n'
             if str(chat.id) in str(out):
                 await message.reply_to_message.copy(int(chat.id))
