@@ -938,6 +938,32 @@ async def send_msg(bot, message):
     else:
         await message.reply_text("<b>Use this command as a reply to any message using the target chat id. For eg: /send userid</b>")
 
+@Client.on_message(filters.command("grpsend") & filters.user(ADMINS))
+async def send_msg(bot, message):
+    if message.reply_to_message:
+        target_id = message.text.split(" ", 1)[1]
+        out = "Chats Saved In DB Are:\n\n"
+        success = False
+        try:
+            chat = await bot.get_chats(target_id)
+            chats = await db.get_all_chats()
+            async for cht in chats:
+                out += f"{cht['id']}"
+                out += '\n'
+            if str(chat.id) in str(out):
+                await message.reply_to_message.copy(int(chat.id))
+                success = True
+            else:
+                success = False
+            if success:
+                await message.reply_text(f"<b>Your message has been successfully send to {chat.mention}.</b>")
+            else:
+                await message.reply_text("<b>This user didn't started this bot yet !</b>")
+        except Exception as e:
+            await message.reply_text(f"<b>Error: {e}</b>")
+    else:
+        await message.reply_text("<b>Use this command as a reply to any message using the target chat id. For eg: /send chatid</b>")
+
 @Client.on_message(filters.command("deletefiles") & filters.user(ADMINS))
 async def deletemultiplefiles(bot, message):
     chat_type = message.chat.type
