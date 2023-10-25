@@ -945,7 +945,7 @@ async def send_msg(bot, message):
         out = "Chats Saved In DB Are:\n\n"
         success = False
         try:
-            chat = await bot.get_chats(target_id)
+            chat = await tg.get_chats(target_id)
             chats = await db.get_all_chats()
             async for cht in chats:
                 out += f"{cht['id']}"
@@ -962,7 +962,7 @@ async def send_msg(bot, message):
         except Exception as e:
             await message.reply_text(f"<b>Error: {e}</b>")
     else:
-        await message.reply_text("<b>Use this command as a reply to any message using the target chat id. For eg: /send chatid</b>")
+        await message.reply_text("<b>Use this command as a reply to any message using the target chat id. For eg: /grpsend chatid</b>")
 
 @Client.on_message(filters.command("deletefiles") & filters.user(ADMINS))
 async def deletemultiplefiles(bot, message):
