@@ -89,15 +89,12 @@ async def leave_a_chat(bot, message):
         chat = chat
     try:
         buttons = [[
-            InlineKeyboardButton('🎥 Mᴏᴠɪᴇ Gʀᴏᴜᴘ',url="https://t.me/+zWbNbzlc4EcxMjg1"),
-            InlineKeyboardButton('Owner', url="https://t.me/cinewood_1")
-        ],[
-            InlineKeyboardButton('Use Me Here', url=f'https://t.me/{SUPPORT_CHAT}')
-        ]]
+                    InlineKeyboardButton('🤖 🄾🅃🄷🄴🅁 🄱🄾🅃🅂 🤖', url=https://t.me/cine_wood_bot?start),
+                  ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat,
-            text='<b>Hello Friends, \nMy admin has told me to leave from group, so i go! If you wanna add me again contact my Support Group or My Owner</b>',
+            text='<b>⚠️ 𝙄𝙈𝙋𝙊𝙍𝙏𝘼𝙉𝙏 𝙉𝙊𝙏𝙄𝘾𝙀 ⚠️\nʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏɴʟʏ ɪꜰ ʏᴏᴜ ʜᴀᴠᴇ ᴍᴏʀᴇ ᴛʜᴀɴ 50 ᴍᴇᴍʙᴇʀꜱ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏᴛʜᴇʀᴡɪꜱᴇ ʏᴏᴜ ᴄᴀɴɴᴏᴛ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ. ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴏᴜʀ ᴏᴛʜᴇʀ ʙᴏᴛ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ.</b>',
             reply_markup=reply_markup,
         )
 
@@ -136,7 +133,7 @@ async def disable_chat(bot, message):
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat_, 
-            text=f'<b>Hello Friends, \nMy admin has told me to leave from group so i go! If you wanna add me again contact my support group.</b> \nReason : <code>{reason}</code>',
+            text=f'<b>⚠️ 𝙄𝙈𝙋𝙊𝙍𝙏𝘼𝙉𝙏 𝙉𝙊𝙏𝙄𝘾𝙀 ⚠️\nʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏɴʟʏ ɪꜰ ʏᴏᴜ ʜᴀᴠᴇ ᴍᴏʀᴇ ᴛʜᴀɴ 50 ᴍᴇᴍʙᴇʀꜱ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏᴛʜᴇʀᴡɪꜱᴇ ʏᴏᴜ ᴄᴀɴɴᴏᴛ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ. ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴏᴜʀ ᴏᴛʜᴇʀ ʙᴏᴛ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ.</b> \nReason : <code>{reason}</code>',
             reply_markup=reply_markup)
         await bot.leave_chat(chat_)
     except Exception as e:
