@@ -94,7 +94,7 @@ async def leave_a_chat(bot, message):
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat,
-            text='<b>⚠️ 𝙄𝙈𝙋𝙊𝙍𝙏𝘼𝙉𝙏 𝙉𝙊𝙏𝙄𝘾𝙀 ⚠️\nʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏɴʟʏ ɪꜰ ʏᴏᴜ ʜᴀᴠᴇ ᴍᴏʀᴇ ᴛʜᴀɴ 50 ᴍᴇᴍʙᴇʀꜱ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏᴛʜᴇʀᴡɪꜱᴇ ʏᴏᴜ ᴄᴀɴɴᴏᴛ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ. ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴏᴜʀ ᴏᴛʜᴇʀ ʙᴏᴛ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ.</b>',
+            text='<b>⚠️ 𝙄𝙈𝙋𝙊𝙍𝙏𝘼𝙉𝙏 𝙉𝙊𝙏𝙄𝘾𝙀 ⚠️\n\nʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏɴʟʏ ɪꜰ ʏᴏᴜ ʜᴀᴠᴇ ᴍᴏʀᴇ ᴛʜᴀɴ 50 ᴍᴇᴍʙᴇʀꜱ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏᴛʜᴇʀᴡɪꜱᴇ ʏᴏᴜ ᴄᴀɴɴᴏᴛ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ. ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴏᴜʀ ᴏᴛʜᴇʀ ʙᴏᴛ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ.</b>',
             reply_markup=reply_markup,
         )
 
@@ -133,7 +133,7 @@ async def disable_chat(bot, message):
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat_, 
-            text=f'<b>⚠️ 𝙄𝙈𝙋𝙊𝙍𝙏𝘼𝙉𝙏 𝙉𝙊𝙏𝙄𝘾𝙀 ⚠️\nʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏɴʟʏ ɪꜰ ʏᴏᴜ ʜᴀᴠᴇ ᴍᴏʀᴇ ᴛʜᴀɴ 50 ᴍᴇᴍʙᴇʀꜱ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏᴛʜᴇʀᴡɪꜱᴇ ʏᴏᴜ ᴄᴀɴɴᴏᴛ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ. ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴏᴜʀ ᴏᴛʜᴇʀ ʙᴏᴛ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ.</b> \nReason : <code>{reason}</code>',
+            text=f'<b>⚠️ 𝙄𝙈𝙋𝙊𝙍𝙏𝘼𝙉𝙏 𝙉𝙊𝙏𝙄𝘾𝙀 ⚠️\n\nʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏɴʟʏ ɪꜰ ʏᴏᴜ ʜᴀᴠᴇ ᴍᴏʀᴇ ᴛʜᴀɴ 50 ᴍᴇᴍʙᴇʀꜱ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏᴛʜᴇʀᴡɪꜱᴇ ʏᴏᴜ ᴄᴀɴɴᴏᴛ ᴜꜱᴇ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ. ʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ ᴏᴜʀ ᴏᴛʜᴇʀ ʙᴏᴛ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ.</b> \nReason : <code>{reason}</code>',
             reply_markup=reply_markup)
         await bot.leave_chat(chat_)
     except Exception as e:
