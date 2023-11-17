@@ -1289,9 +1289,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('💥 Uᴘᴅᴀᴛᴇs', url='https://t.me/+YBYfWpzSS_wxYWU1'),
                     InlineKeyboardButton('🤖 Aʙᴏᴜᴛ', callback_data='about')
                 ],[
-                  InlineKeyboardButton('🎬 Lᴀᴛᴇsᴛ Mᴏᴠɪᴇs Cʜᴀɴɴᴇʟ 🎬', callback_data='source')
-                ],[
-                    InlineKeyboardButton('🆘 𝐂𝐢𝐧𝐞𝐖𝐨𝐨𝐝 𝐇𝐞𝐥𝐩 𝐂𝐞𝐧𝐭𝐞𝐫 🆘', url="t.me/cinewood_support_bot")
+                  InlineKeyboardButton('🤑 Eᴀʀɴ Mᴏɴᴇʏ Wɪᴛʜ Bᴏᴛ 💰', callback_data="earn_money")
                   ]]
         
         reply_markup = InlineKeyboardMarkup(buttons)
