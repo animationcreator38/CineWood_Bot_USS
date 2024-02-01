@@ -116,6 +116,9 @@ if HAS_SSL:
 else:
     URL = "http://{}/".format(FQDN)
 
+# add premium logs channel id
+PREMIUM_LOGS = int(environ.get('PREMIUM_LOGS', ''))
+
 
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
