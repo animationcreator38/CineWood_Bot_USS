@@ -1028,7 +1028,7 @@ async def showshortlink(bot, message):
 #     if 'tutorial' in settings.keys():
 #         st = settings['tutorial']
 #     else:
-#         return await message.reply_text("<b>Tutorial Link Not Connected\n\nYou can Connect Using /set_tutorial command</b>")
+#         return await message.reply_text("<b>Tutorial Link Not Connected\n\nYou can Connect Using /tutorial command</b>")
     if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS:
         return await message.reply_text("<b>Tʜɪs ᴄᴏᴍᴍᴀɴᴅ Wᴏʀᴋs Oɴʟʏ Fᴏʀ ᴛʜɪs Gʀᴏᴜᴘ Oᴡɴᴇʀ/Aᴅᴍɪɴ\n\nTʀʏ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪɴ ʏᴏᴜʀ Oᴡɴ Gʀᴏᴜᴘ, Iғ Yᴏᴜ Aʀᴇ Usɪɴɢ Mᴇ Iɴ Yᴏᴜʀ Gʀᴏᴜᴘ</b>")
     else:
@@ -1046,7 +1046,7 @@ async def showshortlink(bot, message):
             st = settings['tutorial']
             return await message.reply_text(f"<b>Tutorial: <code>{st}</code>\n\nSetlink Url Not Connected\n\nYou can Connect Using /setlink command</b>")
         else:
-            return await message.reply_text("Setlink url and Tutorial Link Not Connected. Check this commands, /shortlink and /set_tutorial")
+            return await message.reply_text("Setlink url and Tutorial Link Not Connected. Check this commands, /setlink and /tutorial")
 
 
 @Client.on_message(filters.command("tutorial"))
